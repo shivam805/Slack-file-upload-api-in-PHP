@@ -8,14 +8,7 @@
             $fh = fopen($target_path, 'rw'); # don't create a file, attempt
                                          # to use memory instead
 
-            # write out the headers
-            fputcsv($fh, array_keys(current($data)));
-
-            # write out the data
-            foreach ( $data as $row ) {
-                    fputcsv($fh, $row);
-            }
-            rewind($fh);
+         
             $csv = stream_get_contents($fh);
             $postFields['content'] = $csv;
 
