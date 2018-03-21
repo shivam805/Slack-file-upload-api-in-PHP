@@ -5,10 +5,7 @@
             $postFields = array();
             $target_path = $filename;
      
-            $fh = fopen($target_path, 'rw'); # don't create a file, attempt
-                                         # to use memory instead
-
-         
+            $fh = fopen($target_path, 'rw');
             $csv = stream_get_contents($fh);
             $postFields['content'] = $csv;
 
@@ -18,7 +15,6 @@
             $postFields['channels'] = "order-report";
             $postFields['pretty'] = "1";
             $postFields['username'] = "";
-
             print_r($postFields);
             
             $curl_handle = curl_init("https://slack.com/api/files.upload");
